@@ -2,10 +2,9 @@ using System;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-namespace UnityStandardAssets._2D
-{
-    public class DontHoldControl : PlayerControl
-    {
+namespace UnityStandardAssets._2D {
+
+    public class DontHoldControl : PlayerControl {
         private bool m_Jump;
         private bool isJumpPressed;
 
@@ -32,7 +31,11 @@ namespace UnityStandardAssets._2D
 
 
 		private void FixedUpdate() {
-            m_Grounded = false;
+			if (isDead) {
+				return;
+			}
+
+			m_Grounded = false;
 
             // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
             // This can be done using layers instead but Sample Assets will not overwrite your project settings.
@@ -104,9 +107,10 @@ namespace UnityStandardAssets._2D
 		}
 
 
-        private void Update()
-        {
-            isJumpPressed = CrossPlatformInputManager.GetButton("Jump");
+		protected override void Update() {
+			base.Update();
+
+			isJumpPressed = CrossPlatformInputManager.GetButton("Jump");
             if (!m_Jump)
             {
                 // Read the jump input in Update so button presses aren't missed.

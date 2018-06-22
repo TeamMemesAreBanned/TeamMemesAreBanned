@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class SwimmingControl : MonoBehaviour {
+public class SwimmingControl : PlayerControl {
 
     private bool jumpPressed = false;
     private bool isGrounded = false;
@@ -38,7 +38,11 @@ public class SwimmingControl : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        isGrounded = false;
+		if (isDead) {
+			return;
+		}
+
+		isGrounded = false;
 
         // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
         // This can be done using layers instead but Sample Assets will not overwrite your project settings.
@@ -107,8 +111,10 @@ public class SwimmingControl : MonoBehaviour {
         transform.localScale = theScale;
     }
 
-    private void Update() {
-        if (!jumpPressed) {
+	protected override void Update() {
+		base.Update();
+
+		if (!jumpPressed) {
             // Read the jump input in Update so button presses aren't missed.
             jumpPressed = CrossPlatformInputManager.GetButtonDown("Jump");
         }
