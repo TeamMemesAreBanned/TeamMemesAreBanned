@@ -428,7 +428,7 @@ MonoBehaviour:
     m_Bits: 256
   bounceVelocity: 10
   maxSpeed: 3
-  airControl: 0
+  airControl: 1
 --- !u!1001 &568241459
 Prefab:
   m_ObjectHideFlags: 0
