@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 231831185}
   - component: {fileID: 231831184}
   - component: {fileID: 231831183}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327,7 +327,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_WhatIsGround:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 256
   jumpVelocity: 10
   speed: 2
 --- !u!1001 &568241459
