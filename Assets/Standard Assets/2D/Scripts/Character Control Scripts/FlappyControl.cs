@@ -15,7 +15,7 @@ public class FlappyControl : PlayerControl {
 
     [SerializeField] private LayerMask m_WhatIsGround;
 
-    const float k_GroundedRadius = .2f;
+    const float k_GroundedRadius = .15f;
     const float k_CeilingRadius = .01f;
 
     public float jumpVelocity = 10f;
