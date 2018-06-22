@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class FlappyControl : MonoBehaviour {
+public class FlappyControl : PlayerControl {
 
     private bool m_Jump;
     private bool m_Grounded;
@@ -15,7 +15,7 @@ public class FlappyControl : MonoBehaviour {
 
     [SerializeField] private LayerMask m_WhatIsGround;
 
-    const float k_GroundedRadius = .2f;
+    const float k_GroundedRadius = .15f;
     const float k_CeilingRadius = .01f;
 
     public float jumpVelocity = 10f;
@@ -34,7 +34,11 @@ public class FlappyControl : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        m_Grounded = false;
+		if (isDead) {
+			return;
+		}
+
+		m_Grounded = false;
 
         // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
         // This can be done using layers instead but Sample Assets will not overwrite your project settings.
@@ -61,8 +65,10 @@ public class FlappyControl : MonoBehaviour {
         }
     }
 
-    private void Update() {
-        if (!m_Jump) {
+	protected override void Update() {
+		base.Update();
+
+		if (!m_Jump) {
             // Read the jump input in Update so button presses aren't missed.
             m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
         }

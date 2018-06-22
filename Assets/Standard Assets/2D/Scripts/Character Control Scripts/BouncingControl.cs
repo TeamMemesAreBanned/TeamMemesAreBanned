@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class BouncingControl : MonoBehaviour {
+public class BouncingControl : PlayerControl {
 
     private bool isGrounded = false;
     private bool isFacingRight = true;
@@ -15,7 +15,7 @@ public class BouncingControl : MonoBehaviour {
 
     [SerializeField] private LayerMask m_WhatIsGround;
 
-    const float k_GroundedRadius = .2f;
+    const float k_GroundedRadius = .15f;
     const float k_CeilingRadius = .01f;
 
     public float bounceVelocity = 10f;
@@ -30,7 +30,11 @@ public class BouncingControl : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        isGrounded = false;
+		if (isDead) {
+			return;
+		}
+
+		isGrounded = false;
 
         // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
         // This can be done using layers instead but Sample Assets will not overwrite your project settings.
@@ -92,5 +96,9 @@ public class BouncingControl : MonoBehaviour {
         theScale.x *= -1;
         transform.localScale = theScale;
     }
+
+	protected override void Update() {
+		base.Update();
+	}
 
 }
