@@ -39,12 +39,12 @@ namespace UnityStandardAssets._2D {
 
             // Read the inputs.
             float h = CrossPlatformInputManager.GetAxis("Horizontal");
-            Move(-h, m_Jump, isJumpPressed);
+            Move(-h, m_Jump);
             m_Jump = false;
         }
 
 
-        public void Move(float move, bool jump, bool isJumpPressed) {
+        public void Move(float move, bool jump) {
 
             //only control the player if grounded or airControl is turned on
             if (m_Grounded || m_AirControl) {
