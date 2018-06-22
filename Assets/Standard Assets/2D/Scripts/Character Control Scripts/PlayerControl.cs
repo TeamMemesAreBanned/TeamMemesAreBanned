@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerControl : MonoBehaviour {
+
+	protected bool isDead = false;
 
 	public void Die() {
 
@@ -16,6 +19,12 @@ public class PlayerControl : MonoBehaviour {
 			animator.SetBool("Death", true);
 		}
 
-		this.enabled = false;
+		isDead = true;
+	}
+
+	protected virtual void Update() {
+		if (isDead && Input.GetKeyDown(KeyCode.Space)) {
+			SceneManager.LoadScene(SceneManager.GetSceneAt(0).name);
+		}
 	}
 }

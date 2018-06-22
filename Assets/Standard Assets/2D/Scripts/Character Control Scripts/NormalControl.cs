@@ -25,6 +25,10 @@ namespace UnityStandardAssets._2D
 
 
         private void FixedUpdate() {
+			if (isDead) {
+				return;
+			}
+
             m_Grounded = false;
 
             // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
@@ -96,8 +100,10 @@ namespace UnityStandardAssets._2D
         }
 
 
-        private void Update()
+        protected override void Update()
         {
+			base.Update();
+
             isJumpPressed = CrossPlatformInputManager.GetButton("Jump");
             if (!m_Jump)
             {
