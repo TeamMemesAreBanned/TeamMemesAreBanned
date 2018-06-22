@@ -322,14 +322,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 417157013}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f3b7defa193f41d1b24d34af11ff467, type: 3}
+  m_Script: {fileID: 11500000, guid: 8bfcb73c506cd4f559a36471f1adf2d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_WhatIsGround:
     serializedVersion: 2
     m_Bits: 256
-  jumpVelocity: 10
-  speed: 2
+  jumpVelocity: 3
+  gravity: 1
+  maxSpeed: 3
+  sinkScale: 2
+  upScale: 0.8
 --- !u!1001 &568241459
 Prefab:
   m_ObjectHideFlags: 0
