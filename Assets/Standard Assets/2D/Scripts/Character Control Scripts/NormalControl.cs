@@ -4,7 +4,7 @@ using UnityStandardAssets.CrossPlatformInput;
 
 namespace UnityStandardAssets._2D
 {
-    public class NormalControl : MonoBehaviour
+    public class NormalControl : PlayerControl
     {
         private bool m_Jump;
         private bool isJumpPressed;

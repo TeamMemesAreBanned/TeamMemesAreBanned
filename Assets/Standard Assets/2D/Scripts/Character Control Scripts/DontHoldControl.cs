@@ -4,7 +4,7 @@ using UnityStandardAssets.CrossPlatformInput;
 
 namespace UnityStandardAssets._2D
 {
-    public class DontHoldControl : MonoBehaviour
+    public class DontHoldControl : PlayerControl
     {
         private bool m_Jump;
         private bool isJumpPressed;
@@ -121,8 +121,8 @@ namespace UnityStandardAssets._2D
 
 			spriteRenderer.color = Color.Lerp(Color.white, Color.red, timeKeyHeld / maxTimeKeyHeld);
 
-			if (timeKeyHeld > maxTimeKeyHeld) {
-				// TODO: DEATH
+			if (timeKeyHeld >= maxTimeKeyHeld) {
+				Die();
 			}
         }
     }
