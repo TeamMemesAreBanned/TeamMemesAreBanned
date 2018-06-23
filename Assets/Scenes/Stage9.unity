@@ -241,6 +241,11 @@ Prefab:
       propertyPath: musicType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114484607297617834, guid: 41fd1f5740a044e54bd52c46169983a2,
+        type: 2}
+      propertyPath: isUnderwater
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 41fd1f5740a044e54bd52c46169983a2, type: 2}
   m_IsPrefabParent: 0
