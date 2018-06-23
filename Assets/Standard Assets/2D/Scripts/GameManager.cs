@@ -24,15 +24,15 @@ public class GameManager : MonoBehaviour {
 
     private readonly LevelInfo[] levelInfos = {
         new LevelInfo("Stage1", "A nice little trot", 0),
-        new LevelInfo("Stage2", "A nice little... tort?", 1),
-        new LevelInfo("Stage3", "Flappy Gob", 2),
-        new LevelInfo("Stage4", "Made of rubber", 3),
-        new LevelInfo("Stage5", "Leap of faith", 4),
-        new LevelInfo("Stage6", "Where'd you go?", 5),
-        new LevelInfo("Stage7", "tort elttil ecin A", 6),
-        new LevelInfo("Stage8", "Is it hot in here or is it just you?", 7),
+		new LevelInfo("Stage7", "tort elttil ecin A", 6),
+        new LevelInfo("Stage2", "Head in the clouds", 1),
         new LevelInfo("Stage9", "Everyone's favourite level", 8),
+		new LevelInfo("Stage5", "Leap of faith", 4),
+		new LevelInfo("Stage8", "Is it hot in here or is it just you?", 7),
         new LevelInfo("Stage10", "snek", 9),
+		new LevelInfo("Stage6", "Where'd you go?", 5),
+		new LevelInfo("Stage4", "Made of rubber", 3),
+		new LevelInfo("Stage3", "Flappy Gob", 2),
         new LevelInfo("Stage11", "TEST PROTO PLS DO NOT JUDGE", 10)
     };
 
