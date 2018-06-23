@@ -24,18 +24,22 @@ public class UnderworldController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (normalControl.transform.position.y > groundLevel) {
-			normalControl.enabled = true;
-			reverseGravityControl.enabled = false;
-			Vector3 rotation = player.transform.eulerAngles;
-			rotation.z = 0;
-			player.transform.eulerAngles = rotation;
+			if (reverseGravityControl != null) {
+				normalControl.enabled = true;
+				reverseGravityControl.enabled = false;
+				Vector3 rotation = player.transform.eulerAngles;
+				rotation.z = 0;
+				player.transform.eulerAngles = rotation;
+			}
 			cameraFollowBetter.targetOffset.y = normalYCameraOffset;
 		} else {
-			normalControl.enabled = false;
-			reverseGravityControl.enabled = true;
-			Vector3 rotation = player.transform.eulerAngles;
-			rotation.z = 180;
-			player.transform.eulerAngles = rotation;
+			if (reverseGravityControl != null) {
+				normalControl.enabled = false;
+				reverseGravityControl.enabled = true;
+				Vector3 rotation = player.transform.eulerAngles;
+				rotation.z = 180;
+				player.transform.eulerAngles = rotation;
+			}
 			cameraFollowBetter.targetOffset.y = reversedYCameraOffset;
 		}
 	}
