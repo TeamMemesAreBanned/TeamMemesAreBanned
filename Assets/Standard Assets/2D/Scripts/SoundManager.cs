@@ -12,11 +12,13 @@ public class SoundManager : MonoBehaviour {
     public AudioClip titleMusic;
     public AudioClip[] levelMusic;
     public AudioClip glitchMusic;
+    public AudioClip endScreenMusic;
 
     private enum MusicType {
         Title,
         Level,
-        Glitch
+        Glitch,
+        EndScreen
     };
 
     private MusicType currentlyPlayingMusicType;
@@ -81,6 +83,16 @@ public class SoundManager : MonoBehaviour {
         musicSource.Play();
         musicSource.loop = true;
         currentlyPlayingMusicType = MusicType.Glitch;
+    }
+
+    public void PlayEndScreenMusic() {
+        if (currentlyPlayingMusicType == MusicType.EndScreen && musicSource.isPlaying) {
+            return;
+        }
+        musicSource.clip = endScreenMusic;
+        musicSource.Play();
+        musicSource.loop = true;
+        currentlyPlayingMusicType = MusicType.EndScreen;
     }
 
     public void SetUnderwater(bool shouldBeUnderwater) {

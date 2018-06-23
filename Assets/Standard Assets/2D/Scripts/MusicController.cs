@@ -6,7 +6,8 @@ public class MusicController : MonoBehaviour {
     public enum MusicType {
         Level,
         Glitch,
-        Title
+        Title,
+        EndScreen
     };
 
     public MusicType musicType;
@@ -24,6 +25,9 @@ public class MusicController : MonoBehaviour {
                 break;
             case MusicType.Title:
                 SoundManager.instance.PlayTitleMusic();
+                break;
+            case MusicType.EndScreen:
+                SoundManager.instance.PlayEndScreenMusic();
                 break;
         }
         SoundManager.instance.SetUnderwater(isUnderwater);
