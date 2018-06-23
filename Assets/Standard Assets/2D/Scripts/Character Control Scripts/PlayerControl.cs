@@ -34,8 +34,11 @@ public class PlayerControl : MonoBehaviour {
 
 		isDead = true;
 
-        AudioClip death = (Random.Range(0, 100) < 10) ? death2 : death1;
-        SoundManager.instance.PlaySingle(death);
+        if (Random.Range(0, 100) < 10) {
+            SoundManager.instance.PlaySingle(death2);
+        } else {
+            SoundManager.instance.RandomizeSfx(death1);
+        }
 	}
 
 	protected virtual void Update() {
