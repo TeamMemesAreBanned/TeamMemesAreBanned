@@ -243,3 +243,11 @@ MonoBehaviour:
   m_WhatIsGround:
     serializedVersion: 2
     m_Bits: 256
+  jump1: {fileID: 8300000, guid: cbff51f7e35eb42c787fcfbfa133d7f3, type: 3}
+  jump2: {fileID: 8300000, guid: f0b748124111642a1916d616ad36d903, type: 3}
+  jump3: {fileID: 8300000, guid: c88cacefd4be14fe38f73bf5ffaf6efa, type: 3}
+  jump4: {fileID: 8300000, guid: 30b8e6e1e35f748bd94852afc9dd0edd, type: 3}
+  land1: {fileID: 8300000, guid: 2f29d45e789624c6195fd04ec64aad17, type: 3}
+  land2: {fileID: 8300000, guid: 0f9f328cd6897422d8a0f6c103d9ae57, type: 3}
+  land3: {fileID: 8300000, guid: 5e7a969a581114e3caf9ec0e1dc4f995, type: 3}
+  land4: {fileID: 8300000, guid: e02c3770a1cc94dc796dc72d80a3b438, type: 3}
