@@ -255,6 +255,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 38a24120f7dcc476c9a8f4ea75f426f2, type: 3}
   - {fileID: 8300000, guid: f3fee74dca28c4249904d0f9d4aa4ab9, type: 3}
   glitchMusic: {fileID: 8300000, guid: 38afc2d4296494b1684a107f01a0b3bd, type: 3}
+  endScreenMusic: {fileID: 8300000, guid: 47d97235d5c7340039535a37170e7497, type: 3}
 --- !u!164 &164292363650062996
 AudioReverbFilter:
   m_ObjectHideFlags: 1
