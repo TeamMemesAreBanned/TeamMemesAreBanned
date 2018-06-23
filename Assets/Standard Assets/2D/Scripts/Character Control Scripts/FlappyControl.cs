@@ -67,7 +67,8 @@ public class FlappyControl : PlayerControl {
             velocity.y = jumpVelocity;
             m_Rigidbody2D.velocity = velocity;
             SoundManager.instance.RandomizeSfx(flap1, flap2, flap3);
-        }
+			m_Anim.SetTrigger("Flap");
+		}
     }
 
 	protected override void Update() {
@@ -76,9 +77,6 @@ public class FlappyControl : PlayerControl {
 		if (!m_Jump) {
             // Read the jump input in Update so button presses aren't missed.
             m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
-			if (m_Jump) {
-				m_Anim.SetTrigger("Flap");
-			}
         }
     }
 
