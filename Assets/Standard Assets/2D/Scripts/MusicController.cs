@@ -11,6 +11,7 @@ public class MusicController : MonoBehaviour {
 
     public MusicType musicType;
     public GameObject soundManagerPrefab;
+    public bool isUnderwater = false;
 
     private void Awake() {
         EnsureSoundManagerPresent();
@@ -25,6 +26,7 @@ public class MusicController : MonoBehaviour {
                 SoundManager.instance.PlayTitleMusic();
                 break;
         }
+        SoundManager.instance.SetUnderwater(isUnderwater);
     }
 
     private void EnsureSoundManagerPresent() {
