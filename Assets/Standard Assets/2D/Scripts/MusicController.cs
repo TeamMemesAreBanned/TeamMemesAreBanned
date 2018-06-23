@@ -10,8 +10,10 @@ public class MusicController : MonoBehaviour {
     };
 
     public MusicType musicType;
+    public GameObject soundManagerPrefab;
 
     private void Awake() {
+        EnsureSoundManagerPresent();
         switch (musicType) {
             case MusicType.Level:
                 SoundManager.instance.PlayRandomLevelMusic();
@@ -22,6 +24,13 @@ public class MusicController : MonoBehaviour {
             case MusicType.Title:
                 SoundManager.instance.PlayTitleMusic();
                 break;
+        }
+    }
+
+    private void EnsureSoundManagerPresent() {
+        SoundManager sm = FindObjectOfType<SoundManager>();
+        if (sm == null) {
+            Instantiate(soundManagerPrefab);
         }
     }
 }
