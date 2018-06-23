@@ -32,5 +32,9 @@ public class PlayerControl : MonoBehaviour {
 		if (isDead && Input.GetKeyDown(KeyCode.Space)) {
 			SceneManager.LoadScene(SceneManager.GetSceneAt(0).name);
 		}
+
+        if (Input.GetKeyUp(KeyCode.R)) {
+            SceneManager.LoadScene(SceneManager.GetSceneAt(0).name);
+        }
 	}
 }

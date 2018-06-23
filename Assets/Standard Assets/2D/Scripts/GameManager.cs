@@ -5,22 +5,34 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
+    public struct LevelInfo {
+        public string name;
+        public string hint;
+        public int index;
+
+        public LevelInfo(string p1, string p2, int p3) {
+            name = p1;
+            hint = p2;
+            index = p3;
+        }
+    }
+
     public static GameManager instance = null;
-    private int level = -1;
+    public int level = -1;
     public int deaths = 0;
     public bool itemCollected = false;
 
-    private readonly string[] levelNames = {
-        "Stage1",
-        "Stage2",
-        "Stage3",
-        "Stage4",
-        "Stage5",
-        "Stage6",
-        "Stage7",
-        "Stage8",
-        "Stage9",
-        "Stage10"
+    private readonly LevelInfo[] levelInfos = {
+        new LevelInfo("Stage1", "A nice little trot", 0),
+        new LevelInfo("Stage2", "A nice little... tort?", 1),
+        new LevelInfo("Stage3", "Flappy Gob", 2),
+        new LevelInfo("Stage4", "Made of rubber", 3),
+        new LevelInfo("Stage5", "Leap of faith", 4),
+        new LevelInfo("Stage6", "Where'd you go?", 5),
+        new LevelInfo("Stage7", "tort elttil ecin A", 6),
+        new LevelInfo("Stage8", "Is it hot in here or is it just you?", 7),
+        new LevelInfo("Stage9", "Everyone's favourite level", 8),
+        new LevelInfo("Stage10", "snek", 9)
     };
 
     void Awake() {
@@ -45,14 +57,22 @@ public class GameManager : MonoBehaviour {
         level++;
         itemCollected = false;
 
-        if (level >= levelNames.Length) {
+        if (level >= levelInfos.Length) {
             SceneManager.LoadScene("End");
         } else {
-            SceneManager.LoadScene(levelNames[level]);
+            SceneManager.LoadScene(levelInfos[level].name);
         }
     }
 
     public void TrackDeath() {
         deaths++;
+    }
+
+    public LevelInfo GetLevelInfo() {
+        if (level < 0 || level > levelInfos.Length) {
+            return new LevelInfo("", "", 0);
+        }
+
+        return levelInfos[level];
     }
 }
