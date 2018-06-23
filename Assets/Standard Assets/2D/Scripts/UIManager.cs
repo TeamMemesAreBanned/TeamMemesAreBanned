@@ -15,7 +15,7 @@ public class UIManager : MonoBehaviour {
     public Button exitButton = null;
     public GameObject settingsPanel = null;
 
-	private void Awake() {
+	private void Start() {
         if (deathLabel != null) {
             deathLabel.text = GameManager.instance.deaths.ToString();
         }
