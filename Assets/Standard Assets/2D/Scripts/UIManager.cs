@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour {
     public Text levelLabel = null;
     public Text hintLabel = null;
     public Text collectionLabel = null;
+    public Text timerLabel = null;
     public Button resetButton = null;
     public Button exitButton = null;
     public GameObject settingsPanel = null;
@@ -42,20 +43,18 @@ public class UIManager : MonoBehaviour {
         }
 
         if (settingsPanel != null) {
+            if (timerLabel == null) {
+                timerLabel = settingsPanel.transform.Find("txt_timer").gameObject.GetComponent<Text>();
+            }
+
             Button continueButton = settingsPanel.transform.Find("btn_continue").gameObject.GetComponent<Button>();
             continueButton.onClick.AddListener(ToggleSettings);
 
             Button quitButton = settingsPanel.transform.Find("btn_exitGame").gameObject.GetComponent<Button>();
             quitButton.onClick.AddListener(RestartGame);
 
-            Text popupKeysLabel = settingsPanel.transform.Find("txt_collectKeys").gameObject.GetComponent<Text>();
-            popupKeysLabel.text = "0";
-
             Text popupKilledLabel = settingsPanel.transform.Find("txt_killed").gameObject.GetComponent<Text>();
             popupKilledLabel.text = GameManager.instance.deaths.ToString();
-
-            Text popupTimerLabel = settingsPanel.transform.Find("txt_timer").gameObject.GetComponent<Text>();
-            popupTimerLabel.text = "23h";
 
             Text popupLevelLabel = settingsPanel.transform.Find("txt_levelHeader").gameObject.GetComponent<Text>();
             popupLevelLabel.text = "LEVEL 1." + levelInfo.index.ToString();
@@ -98,7 +97,7 @@ public class UIManager : MonoBehaviour {
             RestartLevel();
         }
 
-        if (settingsPanel != null && settingsPanel.activeSelf) {
+        if (timerLabel != null) {
             float currentMillis = (float)GameManager.instance.GetTimePlayed();
             float minutes = Mathf.Floor(currentMillis / 60000);
             float seconds = Mathf.Floor((currentMillis / 1000) % 60);
@@ -126,8 +125,7 @@ public class UIManager : MonoBehaviour {
             }
             timeSpent += millis.ToString();
 
-            Text popupTimerLabel = settingsPanel.transform.Find("txt_timer").gameObject.GetComponent<Text>();
-            popupTimerLabel.text = timeSpent;
+            timerLabel.text = timeSpent;
         }
 	}
 }

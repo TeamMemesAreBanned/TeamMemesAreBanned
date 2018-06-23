@@ -556,6 +556,11 @@ Prefab:
       propertyPath: deathLabel
       value: 
       objectReference: {fileID: 1605836978}
+    - target: {fileID: 114839414694471586, guid: 18c999f82f5b04ca684590b30407cb24,
+        type: 2}
+      propertyPath: timerLabel
+      value: 
+      objectReference: {fileID: 104185841}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 18c999f82f5b04ca684590b30407cb24, type: 2}
   m_IsPrefabParent: 0
