@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public LevelInfo GetLevelInfo() {
-        if (level < 0 || level > levelInfos.Length) {
+        if (level < 0 || level >= levelInfos.Length) {
             return new LevelInfo("", "", 0);
         }
 
