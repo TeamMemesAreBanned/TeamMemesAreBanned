@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerControl : MonoBehaviour {
 
-	private static Vector3 deathOffset = new Vector3(-0.54f, -0.13f, 0);
-
 	protected bool isDead = false;
 
     public AudioClip death1;
@@ -21,13 +19,12 @@ public class PlayerControl : MonoBehaviour {
 		Rigidbody2D rigidbody2D = GetComponent<Rigidbody2D>();
 		if (rigidbody2D != null) {
 			rigidbody2D.velocity = Vector2.zero;
-			rigidbody2D.isKinematic = true;
+			rigidbody2D.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
 		}
 
 		Animator animator = GetComponent<Animator>();
 		if (animator != null) {
 			animator.SetBool("Death", true);
-			//transform.localPosition = transform.localPosition + deathOffset;
 		}
 
         GameManager.instance.TrackDeath();
