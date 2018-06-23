@@ -221,6 +221,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f3b7defa193f41d1b24d34af11ff467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  death1: {fileID: 8300000, guid: 85eaf7d070a1f4f5bafaca2751514f37, type: 3}
+  death2: {fileID: 8300000, guid: eb6ec313e77644395bf0d8cdb321a3b2, type: 3}
   m_WhatIsGround:
     serializedVersion: 2
     m_Bits: 256

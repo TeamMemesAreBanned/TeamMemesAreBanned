@@ -9,6 +9,9 @@ public class PlayerControl : MonoBehaviour {
 
 	protected bool isDead = false;
 
+    public AudioClip death1;
+    public AudioClip death2;
+
 	public void Die() {
 
         if (isDead) {
@@ -30,6 +33,9 @@ public class PlayerControl : MonoBehaviour {
         GameManager.instance.TrackDeath();
 
 		isDead = true;
+
+        AudioClip death = (Random.Range(0, 100) < 10) ? death2 : death1;
+        SoundManager.instance.PlaySingle(death);
 	}
 
 	protected virtual void Update() {
