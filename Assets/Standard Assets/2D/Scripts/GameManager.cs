@@ -32,7 +32,8 @@ public class GameManager : MonoBehaviour {
         new LevelInfo("Stage7", "tort elttil ecin A", 6),
         new LevelInfo("Stage8", "Is it hot in here or is it just you?", 7),
         new LevelInfo("Stage9", "Everyone's favourite level", 8),
-        new LevelInfo("Stage10", "snek", 9)
+        new LevelInfo("Stage10", "snek", 9),
+        new LevelInfo("Stage11", "TEST PROTO PLS DO NOT JUDGE", 10)
     };
 
     void Awake() {
