@@ -10,6 +10,8 @@ public class UIManager : MonoBehaviour {
     public Text levelLabel = null;
     public Text hintLabel = null;
     public Text collectionLabel = null;
+    public Button resetButton = null;
+    public GameObject settingsPanel = null;
 
 	private void Awake() {
         if (deathLabel != null) {
@@ -29,6 +31,10 @@ public class UIManager : MonoBehaviour {
         if (collectionLabel != null) {
             collectionLabel.text = "0/1";
         }
+
+        if (resetButton != null) {
+            resetButton.onClick.AddListener(RestartLevel);
+        }
 	}
 
     public void CollectItem() {
@@ -47,4 +53,15 @@ public class UIManager : MonoBehaviour {
         GameManager.instance.InitGame();
         SceneManager.LoadScene("Title");
     }
+
+	public void Update()
+	{
+        if (Input.GetKeyUp(KeyCode.Escape) && settingsPanel != null) {
+            settingsPanel.SetActive(true);
+        }
+
+        if (Input.GetKeyUp(KeyCode.R)) {
+            RestartLevel();
+        }
+	}
 }
