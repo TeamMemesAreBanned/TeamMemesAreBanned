@@ -24,6 +24,17 @@ namespace UnityStandardAssets._2D
         private bool m_FacingRight = true;
 		private SpriteRenderer spriteRenderer;
 
+        public float fadeOutTime = 0.1f;
+        public float fadeInTime = 0.1f;
+
+        private float keyPressedTime;
+        private float keyReleasedTime;
+        private bool isMoving = false;
+        private bool isFadingIn = false;
+        private bool isFadingOut = false;
+
+        private Color transparentColor = new Color(1f, 1f, 1f, 0f);
+
 
         private void FixedUpdate() {
 			if (isDead) {
@@ -74,7 +85,27 @@ namespace UnityStandardAssets._2D
 				}
 			}
 
-			spriteRenderer.enabled = Mathf.Abs(m_Rigidbody2D.velocity.x) <= 0.01;
+            if (Mathf.Abs(m_Rigidbody2D.velocity.x) > 0.01f) {
+                isFadingIn = false;
+                if (isMoving) {
+                    keyPressedTime += Time.deltaTime;
+                } else {
+                    isFadingOut = true;
+                    isMoving = true;
+                    keyPressedTime = 0f;
+                }
+            } else {
+                isFadingOut = false;
+                if (isMoving) {
+                    isFadingIn = true;
+                    keyReleasedTime = 0f;
+                    isMoving = false;
+                } else {
+                    keyReleasedTime += Time.deltaTime;
+                }
+            }
+
+			//spriteRenderer.enabled = Mathf.Abs(m_Rigidbody2D.velocity.x) <= 0.01;
 
             // If the player should jump...
             if (m_Grounded && jump && m_Anim.GetBool("Ground")) {
@@ -113,6 +144,24 @@ namespace UnityStandardAssets._2D
             {
                 // Read the jump input in Update so button presses aren't missed.
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
+            }
+
+            if (isFadingIn) {
+                float t = keyReleasedTime / fadeInTime;
+                if (t >= 1f) {
+                    spriteRenderer.color = Color.white;
+                    isFadingIn = false;
+                } else {
+                    spriteRenderer.color = Color.Lerp(transparentColor, Color.white, t);
+                }
+            } else if (isFadingOut) {
+                float t = keyPressedTime / fadeOutTime;
+                if (t >= 1f) {
+                    spriteRenderer.color = transparentColor;
+                    isFadingOut = false;
+                } else {
+                    spriteRenderer.color = Color.Lerp(Color.white, transparentColor, keyPressedTime / fadeOutTime);
+                }
             }
         }
     }

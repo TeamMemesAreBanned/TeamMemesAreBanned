@@ -69,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1384154946870026}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.96, y: 8.93, z: 0}
+  m_LocalPosition: {x: -8.143225, y: 3.9253294, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4386570526651348}
@@ -198,6 +198,8 @@ MonoBehaviour:
   m_WhatIsGround:
     serializedVersion: 2
     m_Bits: 256
+  fadeOutTime: 0.1
+  fadeInTime: 0.1
 --- !u!212 &212185346885637822
 SpriteRenderer:
   m_ObjectHideFlags: 1
