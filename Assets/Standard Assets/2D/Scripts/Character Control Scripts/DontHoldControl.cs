@@ -26,6 +26,15 @@ namespace UnityStandardAssets._2D {
 		public float coolDownSpeed = 2f;
 		private float timeKeyHeld = 0f;
 
+        public AudioClip jump1;
+        public AudioClip jump2;
+        public AudioClip jump3;
+        public AudioClip jump4;
+        public AudioClip land1;
+        public AudioClip land2;
+        public AudioClip land3;
+        public AudioClip land4;
+
 
 		private SpriteRenderer spriteRenderer;
 
@@ -35,6 +44,7 @@ namespace UnityStandardAssets._2D {
 				return;
 			}
 
+            bool wasGrounded = m_Grounded;
 			m_Grounded = false;
 
             // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
@@ -45,6 +55,10 @@ namespace UnityStandardAssets._2D {
                     m_Grounded = true;
             }
             m_Anim.SetBool("Ground", m_Grounded);
+
+            if (!wasGrounded && m_Grounded) {
+                SoundManager.instance.RandomizeSfx(land1, land2, land3, land4);
+            }
 
             // Set the vertical animation
             m_Anim.SetFloat("vSpeed", m_Rigidbody2D.velocity.y);
@@ -84,6 +98,7 @@ namespace UnityStandardAssets._2D {
                 m_Grounded = false;
                 m_Anim.SetBool("Ground", false);
                 m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+                SoundManager.instance.RandomizeSfx(jump1, jump2, jump3, jump4);
             }
 
             if (!m_Grounded) {

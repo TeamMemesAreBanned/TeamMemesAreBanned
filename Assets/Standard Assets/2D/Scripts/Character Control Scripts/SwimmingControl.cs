@@ -26,6 +26,12 @@ public class SwimmingControl : PlayerControl {
     public float upScale = 0.8f;
     public float maxGroundSpeed = 1.5f;
 
+    public AudioClip swim1;
+    public AudioClip swim2;
+    public AudioClip swim3;
+    public AudioClip swim4;
+    public AudioClip swim5;
+
     private void Awake() {
         m_GroundCheck = transform.Find("GroundCheck");
         m_CeilingCheck = transform.Find("CeilingCheck");
@@ -80,6 +86,7 @@ public class SwimmingControl : PlayerControl {
             Vector2 velocity = m_Rigidbody2D.velocity;
             velocity.y = jumpVelocity;
             m_Rigidbody2D.velocity = velocity;
+            SoundManager.instance.RandomizeSfx(swim1, swim2, swim3, swim4, swim5);
         }
 
         // The Speed animator parameter is set to the absolute value of the horizontal input.

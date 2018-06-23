@@ -201,6 +201,11 @@ MonoBehaviour:
   sinkScale: 2
   upScale: 0.8
   maxGroundSpeed: 1.5
+  swim1: {fileID: 8300000, guid: bd9258ea0dae9446fa0f9e23db96e1e5, type: 3}
+  swim2: {fileID: 8300000, guid: 020319ce4cfae4f5facd1248f075d870, type: 3}
+  swim3: {fileID: 8300000, guid: 8331f6c15d59e4eb59434f86a3fba83d, type: 3}
+  swim4: {fileID: 8300000, guid: bed8639d27ff141e5a53c3e1838d7bbb, type: 3}
+  swim5: {fileID: 8300000, guid: 65463037056414fbdbc46972348a3d43, type: 3}
 --- !u!212 &212514314293717608
 SpriteRenderer:
   m_ObjectHideFlags: 1

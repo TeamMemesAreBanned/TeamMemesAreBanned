@@ -22,6 +22,11 @@ public class BouncingControl : PlayerControl {
     public float maxSpeed = 8f;
     public bool airControl = false;
 
+    public AudioClip jump1;
+    public AudioClip jump2;
+    public AudioClip jump3;
+    public AudioClip jump4;
+
     private void Awake() {
         m_GroundCheck = transform.Find("GroundCheck");
         m_CeilingCheck = transform.Find("CeilingCheck");
@@ -71,6 +76,7 @@ public class BouncingControl : PlayerControl {
         float vertical = m_Rigidbody2D.velocity.y;
         if (isGrounded) {
             vertical = bounceVelocity;
+            SoundManager.instance.RandomizeSfx(jump1, jump2, jump3, jump4);
         }
 
         m_Rigidbody2D.velocity = new Vector2(horizontalMove * maxSpeed, vertical);
