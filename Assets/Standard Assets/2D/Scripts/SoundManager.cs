@@ -21,6 +21,9 @@ public class SoundManager : MonoBehaviour {
 
     private MusicType currentlyPlayingMusicType;
 
+    private AudioLowPassFilter lowPassFilter;
+    private AudioReverbFilter reverbFilter;
+
     // Use this for initialization
     void Awake() {
         if (instance == null) {
@@ -30,6 +33,9 @@ public class SoundManager : MonoBehaviour {
         }
 
         DontDestroyOnLoad(gameObject);
+
+        lowPassFilter = GetComponent<AudioLowPassFilter>();
+        reverbFilter = GetComponent<AudioReverbFilter>();
     }
 
     public void PlaySingle(AudioClip clip) {
@@ -75,6 +81,11 @@ public class SoundManager : MonoBehaviour {
         musicSource.Play();
         musicSource.loop = true;
         currentlyPlayingMusicType = MusicType.Glitch;
+    }
+
+    public void SetUnderwater(bool shouldBeUnderwater) {
+        lowPassFilter.enabled = shouldBeUnderwater;
+        reverbFilter.enabled = shouldBeUnderwater;
     }
 
     private void Update() {

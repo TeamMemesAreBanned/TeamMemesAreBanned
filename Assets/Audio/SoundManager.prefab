@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 82453687666566704}
   - component: {fileID: 82336835390006586}
   - component: {fileID: 114939435962265166}
+  - component: {fileID: 169546706719314014}
+  - component: {fileID: 164292363650062996}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -148,7 +150,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.804
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -253,3 +255,49 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 38a24120f7dcc476c9a8f4ea75f426f2, type: 3}
   - {fileID: 8300000, guid: f3fee74dca28c4249904d0f9d4aa4ab9, type: 3}
   glitchMusic: {fileID: 8300000, guid: 38afc2d4296494b1684a107f01a0b3bd, type: 3}
+--- !u!164 &164292363650062996
+AudioReverbFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1923089349863912}
+  m_Enabled: 0
+  m_DryLevel: 0
+  m_Room: -1000
+  m_RoomHF: -4000
+  m_DecayTime: 0.3
+  m_DecayHFRatio: 0.1
+  m_ReflectionsLevel: -1831
+  m_ReverbLevel: -1630
+  m_ReverbDelay: 0.03
+  m_Diffusion: 100
+  m_Density: 100
+  m_HFReference: 5000
+  m_RoomLF: 0
+  m_LFReference: 250
+  m_ReflectionsDelay: 0
+  m_ReverbPreset: 12
+--- !u!169 &169546706719314014
+AudioLowPassFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1923089349863912}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_LowpassResonanceQ: 1
+  lowpassLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.07040909
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
