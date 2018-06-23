@@ -18,7 +18,8 @@ public class GameManager : MonoBehaviour {
         "Stage5",
         "Stage6",
         "Stage7",
-        "Stage8"
+        "Stage8",
+        "Stage9"
     };
 
     void Awake() {
