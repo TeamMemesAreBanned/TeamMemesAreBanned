@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour {
     public int deaths = 0;
     public bool itemCollected = false;
     public DateTime timeStarted;
+    public DateTime timeFinished;
+    public bool isFinished = false;
 
     private readonly LevelInfo[] levelInfos = {
         new LevelInfo("Stage1", "A nice little trot", 0),
@@ -61,17 +63,21 @@ public class GameManager : MonoBehaviour {
         deaths = 0;
         itemCollected = false;
         timeStarted = DateTime.Now;
+        isFinished = false;
     }
 
     public void LoadNextLevel() {
         level++;
         itemCollected = false;
+        isFinished = false;
 
         if (level == 0) {
             timeStarted = DateTime.Now;
         }
 
         if (level >= levelInfos.Length) {
+            timeFinished = DateTime.Now;
+            isFinished = true;
             SceneManager.LoadScene("End");
         } else {
             SceneManager.LoadScene(levelInfos[level].name);
@@ -91,6 +97,9 @@ public class GameManager : MonoBehaviour {
     }
 
     public double GetTimePlayed() {
+        if (isFinished) {
+            return (timeFinished - timeStarted).TotalMilliseconds;
+        }
         return (DateTime.Now - timeStarted).TotalMilliseconds;
     }
 }
