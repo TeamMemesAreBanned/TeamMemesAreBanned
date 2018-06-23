@@ -22,4 +22,14 @@ public class DeathCollider : MonoBehaviour {
 			}
 		}
 	}
+
+	void OnCollisionEnter2D(Collision2D other) {
+		Debug.Log("DEATH");
+		if (other.gameObject.CompareTag("Player")) {
+			PlayerControl playerControl = other.gameObject.GetComponent<PlayerControl>();
+			if (playerControl != null) {
+				playerControl.Die();
+			}
+		}
+	}
 }
