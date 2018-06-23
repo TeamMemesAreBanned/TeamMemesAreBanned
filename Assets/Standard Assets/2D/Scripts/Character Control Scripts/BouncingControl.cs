@@ -73,7 +73,7 @@ public class BouncingControl : PlayerControl {
             vertical = bounceVelocity;
         }
 
-        m_Rigidbody2D.velocity = new Vector2(horizontal, vertical);
+        m_Rigidbody2D.velocity = new Vector2(horizontalMove * maxSpeed, vertical);
 
         // If the input is moving the player right and the player is facing left...
         if (horizontalMove > 0 && !isFacingRight) {
