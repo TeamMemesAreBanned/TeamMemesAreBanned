@@ -27,6 +27,7 @@ namespace UnityStandardAssets._2D
 
         private void FixedUpdate() {
 			if (isDead) {
+                spriteRenderer.enabled = true;
 				return;
 			}
 

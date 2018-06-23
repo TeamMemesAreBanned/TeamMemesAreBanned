@@ -11,8 +11,14 @@ public class GameManager : MonoBehaviour {
     public bool itemCollected = false;
 
     private readonly string[] levelNames = {
-        "Level1",
-        "MainLevel"
+        "Stage1",
+        "Stage2",
+        "Stage3",
+        "Stage4",
+        "Stage5",
+        "Stage6",
+        "Stage7",
+        "Stage8"
     };
 
     void Awake() {

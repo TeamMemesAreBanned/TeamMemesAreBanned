@@ -29,9 +29,8 @@ GameObject:
   - component: {fileID: 5000000}
   - component: {fileID: 6100000}
   - component: {fileID: 114598001015651598}
-  - component: {fileID: 114869380872568002}
   m_Layer: 0
-  m_Name: CharacterRobotBoy
+  m_Name: NormalPlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -244,15 +243,3 @@ MonoBehaviour:
   m_WhatIsGround:
     serializedVersion: 2
     m_Bits: 256
---- !u!114 &114869380872568002
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f802318829aa446fbfb7890cb23fe09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trophyCollected: 0
