@@ -49,8 +49,14 @@ public class GameManager : MonoBehaviour {
 
         InitGame();	
 	}
-	
-    public void InitGame() {
+
+	private void Update() {
+		if (Input.GetKeyDown(KeyCode.J)) {
+			LoadNextLevel();
+		}
+	}
+
+	public void InitGame() {
         level = -1;
         deaths = 0;
         itemCollected = false;
