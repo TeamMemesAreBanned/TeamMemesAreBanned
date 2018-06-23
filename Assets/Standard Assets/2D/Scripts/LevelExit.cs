@@ -13,7 +13,7 @@ public class LevelExit : MonoBehaviour {
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-        if (collision.gameObject.CompareTag("Player") && player.GetComponent<PlayerInventory>().trophyCollected) {
+        if (collision.gameObject.CompareTag("Player") && GameManager.instance.itemCollected) {
             GameManager.instance.LoadNextLevel();
         }
 	}

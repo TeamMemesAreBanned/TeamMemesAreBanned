@@ -29,7 +29,7 @@ public class FollowPlayer : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             isFollowing = true;
-            player.GetComponent<PlayerInventory>().trophyCollected = true;
+            GameManager.instance.itemCollected = true;
         }
     }
 }

@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance = null;
     private int level = -1;
     public int deaths = 0;
+    public bool itemCollected = false;
 
     private readonly string[] levelNames = {
         "Level1",
@@ -29,11 +30,12 @@ public class GameManager : MonoBehaviour {
     public void InitGame() {
         level = -1;
         deaths = 0;
-        SceneManager.LoadScene("Title");
+        itemCollected = false;
     }
 
     public void LoadNextLevel() {
         level++;
+        itemCollected = false;
 
         if (level >= levelNames.Length) {
             SceneManager.LoadScene("End");
@@ -42,7 +44,7 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public void trackDeath() {
+    public void TrackDeath() {
         deaths++;
     }
 }

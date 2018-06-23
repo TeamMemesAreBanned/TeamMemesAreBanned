@@ -9,6 +9,10 @@ public class PlayerControl : MonoBehaviour {
 
 	public void Die() {
 
+        if (isDead) {
+            return;
+        }
+
 		Rigidbody2D rigidbody2D = GetComponent<Rigidbody2D>();
 		if (rigidbody2D != null) {
 			rigidbody2D.velocity = Vector2.zero;
@@ -18,6 +22,8 @@ public class PlayerControl : MonoBehaviour {
 		if (animator != null) {
 			animator.SetBool("Death", true);
 		}
+
+        GameManager.instance.TrackDeath();
 
 		isDead = true;
 	}
