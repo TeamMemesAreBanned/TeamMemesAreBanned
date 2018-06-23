@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour {
     public int level = -1;
     public int deaths = 0;
     public bool itemCollected = false;
+    public DateTime timeStarted;
 
     private readonly LevelInfo[] levelInfos = {
         new LevelInfo("Stage1", "A nice little trot", 0),
@@ -52,11 +54,16 @@ public class GameManager : MonoBehaviour {
         level = -1;
         deaths = 0;
         itemCollected = false;
+        timeStarted = DateTime.Now;
     }
 
     public void LoadNextLevel() {
         level++;
         itemCollected = false;
+
+        if (level == 0) {
+            timeStarted = DateTime.Now;
+        }
 
         if (level >= levelInfos.Length) {
             SceneManager.LoadScene("End");
@@ -75,5 +82,9 @@ public class GameManager : MonoBehaviour {
         }
 
         return levelInfos[level];
+    }
+
+    public double GetTimePlayed() {
+        return (DateTime.Now - timeStarted).TotalMilliseconds;
     }
 }
