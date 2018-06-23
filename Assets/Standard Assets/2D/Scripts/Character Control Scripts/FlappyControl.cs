@@ -21,6 +21,10 @@ public class FlappyControl : PlayerControl {
     public float jumpVelocity = 10f;
     public float speed = 0f;
 
+    public AudioClip flap1;
+    public AudioClip flap2;
+    public AudioClip flap3;
+
     private void Awake() {
         m_GroundCheck = transform.Find("GroundCheck");
         m_CeilingCheck = transform.Find("CeilingCheck");
@@ -62,6 +66,7 @@ public class FlappyControl : PlayerControl {
             Vector2 velocity = m_Rigidbody2D.velocity;
             velocity.y = jumpVelocity;
             m_Rigidbody2D.velocity = velocity;
+            SoundManager.instance.RandomizeSfx(flap1, flap2, flap3);
         }
     }
 
