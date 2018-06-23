@@ -13,7 +13,13 @@ public class SoundManager : MonoBehaviour {
     public AudioClip[] levelMusic;
     public AudioClip glitchMusic;
 
-    private bool isPlayingLevelMusic = false;
+    private enum MusicType {
+        Title,
+        Level,
+        Glitch
+    };
+
+    private MusicType currentlyPlayingMusicType;
 
     // Use this for initialization
     void Awake() {
@@ -41,32 +47,38 @@ public class SoundManager : MonoBehaviour {
     }
 
     public void PlayTitleMusic() {
+        if (currentlyPlayingMusicType == MusicType.Title && musicSource.isPlaying) {
+            return;
+        }
         musicSource.clip = titleMusic;
         musicSource.Play();
         musicSource.loop = true;
-        isPlayingLevelMusic = false;
+        currentlyPlayingMusicType = MusicType.Title;
     }
 
     public void PlayRandomLevelMusic() {
-        if (isPlayingLevelMusic && musicSource.isPlaying) {
+        if (currentlyPlayingMusicType == MusicType.Level && musicSource.isPlaying) {
             return;
         }
         int idx = Random.Range(0, levelMusic.Length);
         musicSource.clip = levelMusic[idx];
         musicSource.Play();
         musicSource.loop = false;
-        isPlayingLevelMusic = true;
+        currentlyPlayingMusicType = MusicType.Level;
     }
 
     public void PlayGlitchMusic() {
+        if (currentlyPlayingMusicType == MusicType.Glitch && musicSource.isPlaying) {
+            return;
+        }
         musicSource.clip = glitchMusic;
         musicSource.Play();
         musicSource.loop = true;
-        isPlayingLevelMusic = false;
+        currentlyPlayingMusicType = MusicType.Glitch;
     }
 
     private void Update() {
-        if (! musicSource.isPlaying && isPlayingLevelMusic) {
+        if (! musicSource.isPlaying && currentlyPlayingMusicType == MusicType.Level) {
             PlayRandomLevelMusic();
         }
     }
