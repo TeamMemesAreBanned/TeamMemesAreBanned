@@ -40,7 +40,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particleSystemPrefab: {fileID: 1727547523008572, guid: 1559f10d6d0f44192bc273445fe2b534,
     type: 2}
-  numParticleSystems: 8
+  numParticleSystems: 30
+  positionJitter: {x: 1, y: 0.1}
 --- !u!224 &224976205379533510
 RectTransform:
   m_ObjectHideFlags: 1
@@ -56,6 +57,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.404, y: -5.31}
-  m_SizeDelta: {x: 26.458, y: 0.537}
+  m_AnchoredPosition: {x: 32.293, y: -5.41}
+  m_SizeDelta: {x: 82.236, y: 0.537}
   m_Pivot: {x: 0.5, y: 0.5}

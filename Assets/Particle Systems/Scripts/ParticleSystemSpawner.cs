@@ -7,6 +7,7 @@ public class ParticleSystemSpawner : MonoBehaviour {
 
     public GameObject particleSystemPrefab;
     public int numParticleSystems;
+    public Vector2 positionJitter;
 
     private RectTransform rectTransform;
 
@@ -15,6 +16,7 @@ public class ParticleSystemSpawner : MonoBehaviour {
     }
 
     void Start () {
+        // figure out the rect params
         Vector3[] corners = new Vector3[4];
         rectTransform.GetWorldCorners(corners);
         float minX = corners[0].x;
@@ -27,17 +29,19 @@ public class ParticleSystemSpawner : MonoBehaviour {
             maxX = Mathf.Max(maxX, corners[i].x);
             maxY = Mathf.Max(maxY, corners[i].y);
         }
+        float width = maxX - minX;
+        float height = maxY - minY;
+
+        // evenly space along width with some jitter
+        float sectionWidth = width / numParticleSystems;
+        float midHeight = (minY + maxY) / 2f;
         for (int i = 0; i < numParticleSystems; i++) {
-            Vector2 pos = ChoosePointInRect(minX, minY, maxX, maxY);
+            Vector2 pos = new Vector2((i + 0.5f) * sectionWidth, midHeight);
+            pos.x += Random.Range(-1f, 1f) * positionJitter.x;
+            pos.y += Random.Range(-1f, 1f) * positionJitter.y;
             SpawnSystemAt(pos);
         }
 	}
-
-    Vector2 ChoosePointInRect(float minX, float minY, float maxX, float maxY) {
-        float x = Random.Range(minX, maxX);
-        float y = Random.Range(minY, maxY);
-        return new Vector2(x, y);
-    }
 
     void SpawnSystemAt(Vector2 pos) {
         GameObject system = Instantiate(particleSystemPrefab, pos, Quaternion.Euler(-90f, 0f, 0f));
