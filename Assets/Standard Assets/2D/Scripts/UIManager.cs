@@ -97,5 +97,37 @@ public class UIManager : MonoBehaviour {
         if (Input.GetKeyUp(KeyCode.R)) {
             RestartLevel();
         }
+
+        if (settingsPanel != null && settingsPanel.activeSelf) {
+            float currentMillis = (float)GameManager.instance.GetTimePlayed();
+            float minutes = Mathf.Floor(currentMillis / 60000);
+            float seconds = Mathf.Floor((currentMillis / 1000) % 60);
+            float millis = Mathf.Floor(currentMillis % 1000);
+
+            string timeSpent = "";
+
+            if (minutes < 10) {
+                timeSpent += "0";
+            }
+            timeSpent += minutes.ToString() + ":";
+
+            if (seconds < 10)
+            {
+                timeSpent += "0";
+            }
+            timeSpent += seconds.ToString() + ".";
+
+            if (millis < 10)
+            {
+                timeSpent += "0";
+            }
+            if (millis < 100) {
+                timeSpent += "0";
+            }
+            timeSpent += millis.ToString();
+
+            Text popupTimerLabel = settingsPanel.transform.Find("txt_timer").gameObject.GetComponent<Text>();
+            popupTimerLabel.text = timeSpent;
+        }
 	}
 }
