@@ -67,7 +67,8 @@ public class FlappyControl : PlayerControl {
             velocity.y = jumpVelocity;
             m_Rigidbody2D.velocity = velocity;
             SoundManager.instance.RandomizeSfx(flap1, flap2, flap3);
-        }
+			m_Anim.SetTrigger("Flap");
+		}
     }
 
 	protected override void Update() {
